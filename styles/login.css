@@ -97,7 +97,7 @@ input.input-error {
 	font-size: 12px;
 	margin-top: 5px;
 	font-weight: 500;
-	display: block;	
+	display: none;	
 }
 
 button {
