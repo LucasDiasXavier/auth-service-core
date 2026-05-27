@@ -26,9 +26,12 @@
                </small>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="password">Senha:</label>
-                <input type="password" placeholder="Insira sua senha...">
+                <input type="password" id="password" placeholder="Insira sua senha..." required>
+                    <small class="error-message" id="password-error">
+                Por favor, insira uma senha válida.
+               </small>
             </div>
 
             <button type="submit" id="login-btn">Entrar</button>

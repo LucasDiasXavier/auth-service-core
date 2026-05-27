@@ -28,9 +28,48 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
+
     errorMessage.style.display = "none";
 
     emailInput.style.border = "2px solid #2563eb";
 
     console.log("Formulário enviado com sucesso!");
+
+
+
+        return;
+});
+
+const formpassword = document.getElementById("login-form");
+const passwordInput = document.getElementById("password");
+const passwordError = document.getElementById("password-error"); 
+
+passwordInput.addEventListener("blur", (event) => { 
+
+    event.preventDefault();
+
+    const password = passwordInput.value.trim(); 
+
+    if (password === "") {
+        passwordError.textContent = "Campo obrigatório.";
+        passwordError.style.display = "block";
+        passwordInput.style.border = "2px solid #ef4444";
+        return;
+    }
+
+    if (!passwordInput.validity.valid) {
+        passwordError.textContent = "Insira uma senha válida.";
+        passwordError.style.display = "block";
+        passwordInput.style.border = "2px solid #ef4444";
+        return;
+    }
+
+    passwordError.style.display = "none";
+    passwordInput.style.border = "2px solid #2563eb";
+
+    console.log("Formulário enviado com sucesso!");
+
+  
+
+        return;
 });
