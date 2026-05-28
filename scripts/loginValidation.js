@@ -15,6 +15,11 @@ form.addEventListener("submit", (event) => {
 
         emailInput.style.border = "2px solid #ef4444";
 
+        setTimeout(function () {
+            emailInput.classList.remove('error');
+            errorMessage.style.display = "none";
+        }, 4000);
+
         return;
     }
 
@@ -54,6 +59,12 @@ passwordInput.addEventListener("blur", (event) => {
         passwordError.textContent = "Campo obrigatório.";
         passwordError.style.display = "block";
         passwordInput.style.border = "2px solid #ef4444";
+
+        setTimeout(function () {
+            passwordInput.classList.remove('error');
+            passwordError.style.display = "none";
+        }, 4000);
+        
         return;
     }
 

@@ -19,25 +19,31 @@
         <form id="register-form" autocomplete="off" novalidate>
             <div class="form-group">
                 <label for="fullname">Nome Completo:</label>
-                <input type="text" id="fullname" placeholder="Nome completo..." />
-                 <small class="error-message" id="fullname-error">
-                Por favor, insira um e-mail válido.
+                <input type="text" id="fullname" name="fullname" placeholder="Nome completo..." required>
+                <small class="error-message" id="fullname-error">
+                Por favor, insira um nome válido.
                </small>
             </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Digite seu email..." required>
-                <small class="error-message">
+                <input type="email" id="email" name="email" placeholder="Digite seu email..." autocomplete="email" required>
+                <small class="error-message" id="email-error">
                 Por favor, insira um e-mail válido.
                </small>
             </div>
              <div class="form-group">
                 <label for="password">Senha:</label>
-                <input type="password" placeholder="Insira sua senha...">
+                <input type="password" id="password" name="password" placeholder="Insira sua senha..." autocomplete="current-password" required>
+                <small class="error-message" id="password-error">
+                Por favor, insira uma senha válida.
+               </small>
             </div>
              <div class="form-group">
                 <label for="confirm-password">Confirme sua senha:</label>
-                <input type="password" placeholder="Insira sua senha...">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Insira sua senha..." autocomplete="current-password" required>
+                <small class="error-message" id="confirm-password-error">
+                Por favor, confirme sua senha.
+               </small>
             </div>
 
 
