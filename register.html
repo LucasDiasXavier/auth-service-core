@@ -3,58 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Authentication System</title>
+    <title>Registro | Sistema de Etapas</title>
     <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
 </head>
-
 <body>
+
     <div class="card">
         <header>
-
             <h1>Registro</h1>
-
         </header>
 
+        <div id="stepperValue">
+            <span class="step-indicator active">1</span>
+            <span>-</span>
+            <span class="step-indicator">2</span>
+            <span>-</span>
+            <span class="step-indicator">3</span>
+        </div>
+
         <form id="register-form" autocomplete="off" novalidate>
-            <div class="form-group">
-                <label for="fullname">Nome Completo:</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Nome completo..." required>
-                <small class="error-message" id="fullname-error">
-                Por favor, insira um nome válido.
-               </small>
-            </div>
-              <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu email..." autocomplete="email" required>
-                <small class="error-message" id="email-error">
-                Por favor, insira um e-mail válido.
-               </small>
-            </div>
-             <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" placeholder="Insira sua senha..." autocomplete="current-password" required>
-                <small class="error-message" id="password-error">
-                Por favor, insira uma senha válida.
-               </small>
-            </div>
-             <div class="form-group">
-                <label for="confirm-password">Confirme sua senha:</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Insira sua senha..." autocomplete="current-password" required>
-                <small class="error-message" id="confirm-password-error">
-                Por favor, confirme sua senha.
-               </small>
+            <div class="step active">
+                <div class="form-group">
+                    <label for="fullname">Nome Completo:</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Seu nome..." required>
+                    <small class="error-message" id="fullname-error">Campo obrigatório.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Data de Nascimento:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                    <small class="error-message" id="birthdate-error">Campo obrigatório.</small>
+                </div>
+
+                <button type="button" class="btn-next">Próximo</button>
+
             </div>
 
+            <div class="step">
+                <div class="form-group">
+                    <label for="phone">Telefone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+                    <small class="error-message" id="phone-error">Campo obrigatório.
+                    </small>
+                </div>
 
-            <button type="submit" id="btn-submit">Cadastrar</button>
+                <div class="form-group">
+                    <label for="address">Endereço:</label>
+                    <input type="text" id="address" name="address" placeholder="Rua, número, bairro" required>
+                    <small class="error-message" id="address-error">Campo obrigatório.</small>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="btn-prev">Voltar</button>
+                    <button type="button" class="btn-next">Próximo</button>
+                </div>
+
+            </div>
+
+            <div class="step">
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Insira um email válido..." name="email" required>
+                    <small class="error-message" id="email-error">Campo obrigatório.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" placeholder="Crie uma senha..." name="password" required>
+                    <small class="error-message" id="password-error">Campo obrigatório.</small>
+                </div>
+
+                <div class="buttons">
+                    <button type="button" class="btn-prev">Voltar</button>
+                    <button type="submit" id="btn-submit">Cadastrar</button>
+                </div>
+            </div>
 
             <footer>
                 Já possui uma conta? <a href="login.html">Entrar</a>
+            </footer>
         </form>
     </div>
 
-    <script src="./scripts/registerValidation.js"></script>
+     <!-- Biblioteca de TOASTS-->
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+   <script src="./scripts/notifications.js"></script>
+
+   <script src="./scripts/registerValidation.js"></script>
 
 </body>
 </html>

@@ -1,117 +1,53 @@
-document.getElementById('register-form').addEventListener('submit', function (event) {
+// registerValidation.js
+document.addEventListener('DOMContentLoaded', () => {
+    const steps = document.querySelectorAll('.step');
+    const indicators = document.querySelectorAll('.step-indicator');
+    let currentStep = 0;
 
-    const fullnameInput = document.getElementById('fullname');
-    const errorMessage = document.getElementById('fullname-error');
+    const updateUI = (index) => {
+        indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
+    };
 
-    fullnameInput.classList.remove('error');
-    errorMessage.style.display = 'none';
+    const validateStep = (index) => {
+        const inputs = steps[index].querySelectorAll('input[required]');
+        let isValid = true;
+        inputs.forEach(input => {
+            const error = document.getElementById(`${input.id}-error`);
+            if (!input.value.trim()) {
+                input.classList.add('input-error');
+                if (error) error.style.display = 'block';
+                isValid = false;
+                setTimeout(() => {
+                    input.classList.remove('input-error');
+                    if (error) error.style.display = 'none';
+                }, 4000);
+            }
+        });
+        return isValid;
+    };
 
-    if (fullnameInput.value.trim() === "") {
-        event.preventDefault();
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-next')) {
+            if (validateStep(currentStep)) {
+                steps[currentStep].classList.remove('active');
+                currentStep++;
+                steps[currentStep].classList.add('active');
+                updateUI(currentStep);
+            }
+        }
+        if (e.target.classList.contains('btn-prev')) {
+            steps[currentStep].classList.remove('active');
+            currentStep--;
+            steps[currentStep].classList.add('active');
+            updateUI(currentStep);
+        }
+    });
 
-        fullnameInput.classList.add('error');
-        errorMessage.textContent = "Campo obrigatório.";
-        errorMessage.style.display = "block";
-        fullnameInput.style.border = "2px solid #ef4444";
-
-        fullnameInput.focus();
-
-        setTimeout(function () {
-            fullnameInput.classList.remove('error');
-            errorMessage.style.display = "none";
-        }, 4000); // Cronômetro  UX
-
-        return;
-    }
-});
-
-document.getElementById('register-form').addEventListener('submit', function (event) {
-
-    const emailInput = document.getElementById('email');
-    const errorMessage = document.getElementById('email-error');
-
-    emailInput.classList.remove('error');
-    errorMessage.style.display = 'none';
-
-    if (emailInput.value.trim() === "") {
-
-        event.preventDefault();
-
-        emailInput.classList.add('error');
-        errorMessage.textContent = 'campo obrigatório.';
-        errorMessage.style.display = 'block';
-        emailInput.style.border = "2px solid #ef4444";
-
-        emailInput.focus();
-
-        setTimeout(function () {
-            emailInput.classList.remove('error');
-            errorMessage.style.display = "none";
-        }, 4000);
-
-        return;
-        
-    }
-});
-
-document.getElementById('register-form').addEventListener('submit', function (event) {
-
-    const passwordInput = document.getElementById('password');
-    const errorMessage = document.getElementById('password-error');
-
-    passwordInput.classList.remove('error');
-    errorMessage.style.display = 'none';
-
-    if (passwordInput.value.trim() === "") {
-
-        event.preventDefault();
-
-        passwordInput.classList.add('error');
-        errorMessage.textContent = 'campo obrigatório.';
-        errorMessage.style.display = 'block';
-        passwordInput.style.border = "2px solid #ef4444";
-
-        passwordInput.focus();
-
-        setTimeout(function () {
-            passwordInput.classList.remove('error');
-            errorMessage.style.display = "none";
-        }, 4000);
-
-        return;
-    }
-});
-
-document.getElementById('register-form').addEventListener('submit', function (event) {
-
-    const confirmPasswordInput = document.getElementById('confirm-password');
-    const errorMessage = document.getElementById('confirm-password-error');
-
-    confirmPasswordInput.classList.remove('error');
-    errorMessage. style.display = 'none';
-
-    if(confirmPasswordInput.value.trim() === "") {
-
-        event.preventDefault();
-
-        confirmPasswordInput.classList.add('error');
-        errorMessage.textContent = 'campo obrigatório.';
-        errorMessage.style.display = 'block'
-        confirmPasswordInput.style.border = '2px solid #ef4444';
-        
-        confirmPasswordInput.focus();
-
-        setTimeout(function () {
-
-            confirmPasswordInput.classList.remove('error');
-            errorMessage.style.display = 'none';
-        }, 4000);
-
-        return;
-    
-    
-    }
-
-
-    
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (validateStep(currentStep)) {
+            // Chama a função global definida em notifications.js
+            window.showSuccess("Conta criada com sucesso!");
+        }
+    });
 });
