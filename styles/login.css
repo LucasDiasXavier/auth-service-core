@@ -64,6 +64,29 @@ label {
 	font-weight: 500;
 }
 
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* evita o texto ficar atrás do ícone */
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: var(--transition);
+}
+
+.input-wrapper i:hover {
+    color: var(--color-primary);
+}
+
 input {
 	width: 100%;
 	padding: 12px;

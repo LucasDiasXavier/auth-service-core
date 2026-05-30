@@ -84,3 +84,18 @@ passwordInput.addEventListener("blur", (event) => {
 
         return;
 });
+
+
+function toggleSenha(inputId, toggleId) {
+
+    const passwordInput = document.getElementById("password");
+    const toggleIcon = document.getElementById("toggle-password");
+
+    if(passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.className = "fa-regular fa-eye";
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.className = "fa-regular fa-eye-slash";
+    }
+}
